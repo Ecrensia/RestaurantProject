@@ -1,5 +1,5 @@
 package com.restaurant.mapper;
 
-public class UserInfoMapper {
+public interface UserInfoMapper {
 
 }
