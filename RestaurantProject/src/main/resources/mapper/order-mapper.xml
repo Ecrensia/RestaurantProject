@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restaurant.mapper.OrderMapper">
+	<select id="searchCanReservOffice" parameterType="HashMap" resultType="HashMap">
+		select 
+		    remain_seats.branch_office_code, bo.office_name
+		    from
+		        (select
+		            scv.branch_office_code,
+		            scv.seat_count - NVL(rss.already_reserv_seat, 0) as can_reserv_seats
+		            from
+		                (select distinct
+		                    count(distinct sm.seat_no) over(partition by sm.branch_office_code) as seat_count,
+		                    sm.branch_office_code
+		                    from seat_map sm) scv
+		            left outer join
+		                (select
+		                    count(*) over(partition by rs.branch_office_code) as already_reserv_seat,
+		                    rs.branch_office_code
+		                    from reservation_seats rs
+		                    where 
+		                        rs.reserv_no like '%' || #{date} || '%' 
+		                        and rs.reserv_time BETWEEN #{startTime} and #{endTime}) rss
+		            on scv.branch_office_code = rss.branch_office_code
+		            order by scv.branch_office_code
+		        ) remain_seats,
+		        branch_office bo
+		    where
+		        remain_seats.branch_office_code = bo.branch_office_code
+		        and remain_seats.can_reserv_seats >= #{persons}
+	</select>
+</mapper>
