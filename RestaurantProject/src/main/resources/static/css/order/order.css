@@ -207,12 +207,12 @@ tr:nth-child(3) input, tr:nth-child(4) input {
     padding: 12px 0px;
 }
 #accord-third {
-    margin: 20px 0px 20px 40px;
+    margin: 20px 0px 20px 0px;
     display: flex;
     flex-direction: row;
 }
 #menu-board {
-    width: 700px;
+    width: 600px;
     border: 1px solid black;
 }
 #menu-board > ul {
@@ -223,7 +223,7 @@ tr:nth-child(3) input, tr:nth-child(4) input {
 }
 #menu-board a {
     display: inline-block;
-    width: 140px;
+    width: 120px;
     color: black;
     text-decoration: none;
     text-align: center;
@@ -237,6 +237,7 @@ tr:nth-child(3) input, tr:nth-child(4) input {
     display: flex;
     flex-flow: row wrap;
     border: 1px solid black;
+    height: 440px;
     overflow-y: scroll;
 }
 .sub-board > div {
@@ -249,10 +250,11 @@ tr:nth-child(3) input, tr:nth-child(4) input {
     width: 100%;
 }
 #menu-basket {
-    margin-left: 50px;
-    width: 270px;
+    margin-left: 20px;
+    width: 480px;
     height: 480px;
     border: 1px solid black;
+    box-sizing: border-box;
 }
 #menu-basket > div:not(#select-menu-list) {
     border: 1px solid black;
@@ -263,18 +265,41 @@ tr:nth-child(3) input, tr:nth-child(4) input {
     height: 355px;
     overflow-y: scroll;
 }
-#select-menu-list > div {
+#select-menu-list .select-menu-info {
     border: 1px solid black;
     margin: 5px;
     background-color: #F67A3E;
 }
+.select-menu-info {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 450px;
+}
+.select-menu-name {
+    width: 350px;
+}
+.select-menu-count {
+    display: flex;
+    width: 100px;
+    height: 30px;
+    margin-top: 16.5px;
+    text-align: center;
+    position: relative;
+    justify-content: right;
+}
+.select-menu-count > [type="text"], .select-menu-count > [type="button"] {
+    width: 25px;
+    margin: 0px 3px;
+}
+.select-menu-price {
+    display: flex;
+    justify-content: right;
+}
 .menu-delete {
-    position: absolute;
-    right: 5px;
+    margin: 0px 5px 0px 10px;
 }
 #select-menu-list .main-menu {
     margin-left: 10px;
-    position: relative;
 }
 #select-menu-list .sub-option {
     margin-left: 30px;
@@ -331,6 +356,7 @@ footer {
     left:50%;
     transform:translate(-50%,-50%);
     width:450px;
+    height: 600px;
     background:#fff;
     z-index:250;
 }
@@ -339,12 +365,15 @@ footer {
     font-size: 25px;
     font-weight: bold;
     background-color: #F67A3E;
+    box-sizing: border-box;
 }
 .modal-contents-container {
-    width: 430px;
+    width: 450px;
+    height: 537px;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: start;
+    overflow-y: scroll;
 }
 .modal-content-box {
     width: 100px;
@@ -363,6 +392,7 @@ footer {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    height: 30px;
 }
 .modal-button-container > div {
     text-align: center;
@@ -373,4 +403,5 @@ footer {
     padding: 5px 0px;
     line-height: 20px;
     font-size: 20px;
+    box-sizing: border-box;
 }

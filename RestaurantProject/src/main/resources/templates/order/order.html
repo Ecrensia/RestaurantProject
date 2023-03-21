@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오더</title>
-    <link rel="stylesheet" href="/order/order.css">
+    <link rel="stylesheet" href="/css/order/order.css">
     <script src="/lib/jquery-3.6.3.js"></script>
     <script src="/lib/jquery-ui.js"></script>
-    <script src="/order/order.js"></script>
+    <script src="/js/order/order.js"></script>
     <script type="text/javascript" th:inline="javascript">
+        function searchSeatMap(date, hour, min) {
+            let code = $(this).prev().attr('id');
+            let param = 'code=' + code + '&date=' + date + '&time=' + hour + min;
+            $.ajax({
+                url : '/order/search/seatmap',
+                data : param,
+                type : 'post',
+                dataType: 'json',
+                success : function(result) {
+                    let tag ='';
+                    for(let i = 0; i < result.length; i++) {
+                        if(`${result[i].SEAT_NO}` < 10) {
+                            tag += `<div style="left:${result[i].X_DIRECTION}px; top:${result[i].Y_DIRECTION}px"><input type="checkbox" id="seat0${result[i].SEAT_NO}" class="seat"><label for="seat0${result[i].SEAT_NO}">0${result[i].SEAT_NO}</label></div>`;
+                        } else {
+                            tag += `<div style="left:${result[i].X_DIRECTION}px; top:${result[i].Y_DIRECTION}px"><input type="checkbox" id="seat${result[i].SEAT_NO}" class="seat"><label for="seat${result[i].SEAT_NO}">${result[i].SEAT_NO}</label></div>`;
+                        }
+                    }
+                    $('.seat-map').html(tag);
+                }
+            });
+        }
+        
         $(function() {
             $('#reserv-search').click(function() {
                 let date = $('[type="date"]').val();
@@ -23,17 +44,18 @@
                     url : '/order/search/office',
                     data : param,
                     type : 'post',
+                    dataType: 'json',
                     success : function(result) {
                         let tag ='';
                         for(let i = 0; i < result.length; i++) {
                             tag += '<div id="branch-office"><input type="radio" name="branch-office"';
-                            tag += 'id=[[${result[i].BRANCH_OFFICE_CODE}]] value=[[${result[i].BRANCH_OFFICE_CODE}]]>';
-                            tag += '<label for=[[${result[i].OFFICE_NAME}]]>[[${result[i].OFFICE_NAME}]]</label></div>';
+                            tag += `id=${result[i].BRANCH_OFFICE_CODE} value=${result[i].OFFICE_NAME}>`;
+                            tag += `<label for=${result[i].BRANCH_OFFICE_CODE}>${result[i].OFFICE_NAME}</label></div>`;
                         }
                         $('#branch-offices').html(tag);
+                        $('#branch-office > label').click(searchSeatMap(date, hour, min));
                     }
                 })
-                
             });
 
 
@@ -118,7 +140,7 @@
             <div class="accordion-first">
                 <div id="input-radio">
                     <div>
-                        <input type="radio" name="order" id="reserv" value="reservation">
+                        <input type="radio" name="order" id="reserv" value="reservation" checked>
                         <label for="reserv">예약</label>
                     </div>
                     <div>
@@ -143,17 +165,17 @@
                         </tr>
                         <tr>
                             <td>주소</td>
-                            <td><input type="text" id="main-address"></td>
-                            <td><input type="button" id="address-search" value="검색"></td>
+                            <td><input type="text" id="main-address" disabled></td>
+                            <td><input type="button" id="address-search" value="검색" disabled></td>
                         </tr>
                         <tr>
                             <td>상세주소</td>
-                            <td colspan="2"><input type="text" id="sub-address"></td>
+                            <td colspan="2"><input type="text" id="sub-address" disabled></td>
                         </tr>
                     </table>
                 </div>
                 <div class="step-button">
-                    <p class="next-step">다음 단계로</p>
+                    <p class="next-step" id="next-first">다음 단계로</p>
                 </div>
             </div>
             <p>좌석선택</p>
@@ -192,9 +214,7 @@
                 </div>
                 <p>예약가능 지점</p>
                 <div class="attach" id="branch-offices">
-
-                            
-
+                    <p>예약가능 매장을 검색하세요</p>
                 </div>
                 <p>좌석 배치도</p>
                 <div class="attach seat-map">
@@ -204,8 +224,8 @@
                     </div>
                 </div>
                 <div class="step-button">
-                    <p class="prev-step">이전 단계로</p>
-                    <p class="next-step">다음 단계로</p>
+                    <p class="prev-step" id="prev-second">이전 단계로</p>
+                    <p class="next-step" id="next-second">다음 단계로</p>
                 </div>
             </div>
             <p>메뉴선택</p>
@@ -213,211 +233,80 @@
                 <div id="accord-third">
                     <div id="menu-board">
                         <ul>
-                            <li><a href="#tab_all_menu">전체메뉴</a></li>
                             <li><a href="#tab_popular_menu">인기메뉴</a></li>
+                            <li><a href="#tab_single_menu">단품</a></li>
                             <li><a href="#tab_set_menu">세트메뉴</a></li>
                             <li><a href="#tab_side_menu">사이드</a></li>
                             <li><a href="#tab_beverage_menu">음료</a></li>
                         </ul>
-                        <div class="sub-board" id="tab_all_menu">
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>전체메뉴1</p>
-                                <p>가격</p>
-                            </div>
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>전체메뉴2</p>
-                                <p>가격</p>
-                            </div>
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>전체메뉴3</p>
-                                <p>가격</p>
-                            </div>
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>전체메뉴4</p>
-                                <p>가격</p>
-                            </div>
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div>
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div>
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div>
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
+                        <div class="sub-board" id="tab_popular_menu">
+                            <div class="tabMenu can-side" th:each="h : ${hList}">
+                                <input type="hidden" name="menuCode" th:value="${h.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${h.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${h.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${h.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${h.menuCode})}" th:alt="${h.menuName}">
+                                <p>[[${h.menuName}]]</p>
+                                <p>[[${h.price}]]</p>
                             </div>
                         </div>
-                        <div class="sub-board" id="tab_popular_menu">
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>인기메뉴</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
+                        <div class="sub-board" id="tab_single_menu">
+                            <div class="tabMenu can-side" th:each="single : ${singleList}">
+                                <input type="hidden" name="menuCode" th:value="${single.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${single.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${single.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${single.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${single.menuCode})}" th:alt="${single.menuName}">
+                                <p>[[${single.menuName}]]</p>
+                                <p>[[${single.price}]]</p>
                             </div>
                         </div>
                         <div class="sub-board" id="tab_set_menu">
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>세트메뉴</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
+                            <div class="tabMenu can-side" th:each="set : ${setList}">
+                                <input type="hidden" name="menuCode" th:value="${set.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${set.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${set.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${set.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${set.menuCode})}" th:alt="${set.menuName}">
+                                <p>[[${set.menuName}]]</p>
+                                <p>[[${set.price}]]</p>
                             </div>
                         </div>
                         <div class="sub-board" id="tab_side_menu">
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>사이드</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
+                            <div class="tabMenu" th:each="side : ${sideList}">
+                                <input type="hidden" name="menuCode" th:value="${side.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${side.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${side.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${side.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${side.menuCode})}" th:alt="${side.menuName}">
+                                <p>[[${side.menuName}]]</p>
+                                <p>[[${side.price}]]</p>
                             </div>
                         </div>
                         <div class="sub-board" id="tab_beverage_menu">
-                            <div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>음료</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
-                            </div><div>
-                                <img src="../../source/img/burger.png" alt="burger">
-                                <p>메뉴이름</p>
-                                <p>가격</p>
+                            <div class="tabMenu" th:each="bev : ${beverageList}">
+                                <input type="hidden" name="menuCode" th:value="${bev.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${bev.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${bev.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${bev.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${bev.menuCode})}" th:alt="${bev.menuName}">
+                                <p>[[${bev.menuName}]]</p>
+                                <p>[[${bev.price}]]</p>
                             </div>
                         </div>
                     </div>
                     <div id="menu-basket">
                         <div>주문리스트</div>
                         <div id="select-menu-list">
-                            <div>
-                                <p class="main-menu">-메뉴1<span class="menu-delete">X</span></p>
-                                <p class="sub-option">옵션1</p>
-                                <p class="sub-option">옵션2</p>
-                            </div>
+                            
                         </div>
-                        <div>개수 : 6개</div>
-                        <div>금액 : 55,000원</div>
+                        <div>개수 : <span id="total-menu-count">0</span>개</div>
+                        <div>금액 : <span id="total-menu-price">0</span>원</div>
                     </div>
                 </div>
                 <div class="step-button">
-                    <p class="prev-step">이전 단계로</p>
-                    <p class="next-step">다음 단계로</p>
+                    <p class="prev-step" id="prev-third">이전 단계로</p>
+                    <p class="next-step" id="next-third">다음 단계로</p>
                 </div>
             </div>
             <p>요청사항</p>
@@ -427,7 +316,7 @@
                     <textarea name="to_office_request" cols="30" rows="10"></textarea>
                 </div>
                 <div class="step-button">
-                    <p class="prev-step">이전 단계로</p>
+                    <p class="prev-step" id="prev-fourth">이전 단계로</p>
                     <button id="to-payment">결제 페이지로</button>
                 </div>
             </div>
@@ -448,54 +337,19 @@
             <p>옵션1</p>
         </div>
         <div class="modal-contents-container">
-            <div class="modal-content-box">
-                <input type="radio" id="option1-menu1" name="option1">
-                <label for="option1-menu1">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>감자튀김</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option1-menu2" name="option1">
-                <label for="option1-menu2">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>치즈스틱</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option1-menu3" name="option1">
-                <label for="option1-menu3">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>너겟</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option1-menu4" name="option1">
-                <label for="option1-menu4">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>어니언링</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option1-menu5" name="option1">
-                <label for="option1-menu5">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>치즈감자튀김</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option1-menu6" name="option1">
-                <label for="option1-menu6">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>양념감자튀김</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
+            <th:block th:each="option1 : ${sideList}">
+                <th:block th:if="${option1.middleCategoryCode == 'BA'}">
+                    <div class="modal-content-box">
+                        <input type="radio" th:id="${option1.menuCode}" name="option1">
+                        <label th:for="${option1.menuCode}">
+                            <input type="hidden" name="menuCode" th:value="${option1.menuCode}">
+                            <img th:src="@{/order/imgdown/{code}(code=${option1.menuCode})}" th:alt="${option1.menuName}">
+                            <p>[[${option1.menuName}]]</p>
+                            <p>[[${option1.price}]]</p>
+                        </label>
+                    </div>
+                </th:block>
+            </th:block>
         </div>
         <div class="modal-button-container">
             <div class="cancel">취소</div>
@@ -507,52 +361,13 @@
             <p>옵션2</p>
         </div>
         <div class="modal-contents-container">
-            <div class="modal-content-box">
-                <input type="radio" id="option2-menu1" name="option2">
-                <label for="option2-menu1">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>감자튀김</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option2-menu2" name="option2">
-                <label for="option2-menu2">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>치즈스틱</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option2-menu3" name="option2">
-                <label for="option2-menu3">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>너겟</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option2-menu4" name="option2">
-                <label for="option2-menu4">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>어니언링</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option2-menu5" name="option2">
-                <label for="option2-menu5">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>치즈감자튀김</p>
-                    <p>3,000원</p>
-                </label>
-            </div>
-            <div class="modal-content-box">
-                <input type="radio" id="option2-menu6" name="option2">
-                <label for="option2-menu6">
-                    <img src="../../source/img/burger.png" alt="">
-                    <p>양념감자튀김</p>
-                    <p>3,000원</p>
+            <div class="modal-content-box" th:each="option2 : ${beverageList}">
+                <input type="radio" th:id="${option2.menuCode}" name="option2">
+                <label th:for="${option2.menuCode}">
+                    <input type="hidden" name="menuCode" th:value="${option2.menuCode}">
+                    <img th:src="@{/order/imgdown/{code}(code=${option2.menuCode})}" th:alt="${option2.menuName}">
+                    <p>[[${option2.menuName}]]</p>
+                    <p>[[${option2.price}]]</p>
                 </label>
             </div>
         </div>
@@ -563,4 +378,6 @@
     </div>
 </body>
 </html>
-</html>
+
+
+
