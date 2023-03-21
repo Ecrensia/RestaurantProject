@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restaurant.mapper.UserInfoMapper">
+	<resultMap type="userInfo" id="userInfo">
+		<id column="user_id" property="userId" />
+		<result column="passwd" property="passwd" />
+		<result column="user_name" property="userName" />
+		<result column="nick" property="nick" />
+		<result column="gender" property="gender" />
+		<result column="adress" property="adress" />
+		<result column="adress_detail" property="adressDetail" />
+		<result column="tel" property="tel" />
+		<result column="birthday" property="birthday" />
+		<result column="create_user" property="createUser" />
+		<result column="agreement_login" property="agreementLogin" />
+
+	</resultMap>
+	
+	<select id="login" parameterType="hashmap" resultMap="userInfo">
+  		select * from userinfo where user_id like #{id} and passwd like #{passwd}
+  	</select>
+</mapper>
