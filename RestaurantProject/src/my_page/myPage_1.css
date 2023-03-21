@@ -1,0 +1,237 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+header {
+    width: 100%;
+    background-color: #F67A3E;
+    position: fixed;
+    z-index: 100;
+}
+#header-main-container {
+    width: 1200px;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+}
+#header-logo {
+    width: 140px;
+    height: 120px;
+    text-align: center;
+}
+#header-sub-container {
+    width: 1060px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#login {
+    width: 1060px;
+    height: 60px;
+    text-align: end;
+}
+#header-logo > img {
+    padding-top: 29.71px;
+    width: 100px;
+}
+#header-nav-main {
+    width: 1060px;
+    height: 60px;
+    overflow: hidden;
+}
+#header-nav-main:hover {
+    height: 260px;
+}
+ul.header-largeMenu {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+}
+ul.header-largeMenu a {
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 30px;
+    padding: 15px 0;
+}
+#header-nav-sub {
+    display: flex;
+    flex-flow: row nowrap;
+}
+ul.header-smallMenu {
+    display: flex;
+    flex-flow: column nowrap;
+    list-style-type: none;
+}
+ul.header-smallMenu a {
+    line-height: 25px;
+    font-size: 25px;
+    width: 265px;
+    padding: 12.5px 0;
+}
+#header-nav-main a:not(#login) {
+    color: black;
+    text-align: center;
+    display: inline-block;
+    width: 265px;
+    text-decoration: none;
+}
+/*section*/
+section{
+    width: 100%;
+    height: 100%;
+    padding: 120px 0px;
+    box-sizing: border-box;
+}
+h2{
+    font-size: 30px;
+    font-weight: bold;
+    color: #F67A3E;
+    margin: 60px 300px;
+}
+.mypage_1_box1_div{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    
+}
+h3{
+    text-align: center;
+    font-size: 25px;
+    color: #F67A3E;
+}
+a{
+    text-align: center;
+    width: 400px;
+    height: 30px;
+    text-decoration: none;
+}
+.a_tag{
+    width: 400px;
+    height: 30px;
+    float: left;
+}
+.tab_container{
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+    text-align: center;
+}
+
+ul.tabs{
+	/* margin-top: 50px; */
+	padding-top: 50px;
+	list-style: none;
+    border-top: 2px solid #F67A3E;
+    border-bottom: 2px solid #F67A3E;
+    padding: 5px 0px;
+    font-size: 20px;
+}
+ul.tabs li{
+    width: 100px;
+	background: #F67A3E;
+	color: white;
+	display: inline-block;
+	padding: 20px 35px;
+	cursor: pointer;
+    margin: 0px 50px;
+}
+
+ul.tabs li.current{
+	background: #F67A3E;
+	color: white;
+}
+.tab_content_container{
+    border: 5px solid #F67A3E;
+    margin-top: 40px;
+    padding: 20px 20px;
+
+}
+.tab-content{
+ 
+	display: none;
+	padding: 15px;
+}
+
+
+/* footer */
+footer {
+    width: 100%;
+    background-color: #F67A3E;
+}
+#footer-container {
+    width: 1200px;
+    padding: 40px 0px;
+    margin: 0px auto;
+}
+#footer-container > p:first-child {
+    font-weight: bold;
+    font-size: 20px;
+}
+#footer-container > p:not(:first-child) {
+    font-size: 15px;
+    margin: 5px 0px 0px 20px;
+}
+.membershipInfo{
+    border: 5px solid #F67A3E;
+    border-radius: 10px;
+    width: 600px;
+    margin: 0px auto;
+    font-size: 20px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.membershipInfo p{
+    font-size: 50px;
+    color: #F67A3E;
+    font-weight: bold;
+}
+.coupon{
+    border: 5px solid #F67A3E;
+    border-radius: 40px;
+    width: 600px;
+    margin: 0px auto;
+    font-size: 20px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.coupon p{
+    font-size: 25px;
+    color: #F67A3E;
+    margin-top: 10px;
+}
+.orderInfo{
+    border: 5px solid #F67A3E;
+    border-radius: 10px;
+    width: 700px;
+    height: 100px;
+    margin: 0px auto;
+    font-size: 20px;
+    box-sizing: border-box;
+    background-color: white;
+}
+.order_div{
+    width: fit-content;
+    /* border: 1px solid black; */
+    margin: 0px auto;
+}
+.order_div > div{
+    /* border: 1px solid black; */
+    float: left;
+    margin: 0px 30px;
+    font-size: 25px;
+}
+.order_div1{
+    padding: 30px 10px;
+    color: #F67A3E;
+}
+.order_div2{
+    padding: 20px 10px;
+    color: #F67A3E;
+}
+.order_div3{
+    padding: 30px 10px;
+    color: #F67A3E;
+}
