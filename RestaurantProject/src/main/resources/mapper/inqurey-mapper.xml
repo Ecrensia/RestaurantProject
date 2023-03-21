@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restaurant.mapper.InqureyMapper">
+	<resultMap type="inqurey" id="inqurey">
+		<id column="INQUIRY_NO" property="inqureyNo"/>
+		<result column="WRITER" property="inqureyWriter"/>
+		<result column="TITLE" property="inqureyTitle"/>
+		<result column="WRITE_DATE" property="inqureyDate"/>
+		<result column="INQUIRY_COUNT" property="inqureyCount"/>
+		<result column="CONTENT" property="inqureyContent"/>
+		<result column="SET_PW" property="setPW"/>
+		<result column="INQUIRY_PW" property="inqureyPW"/>
+	</resultMap>
+	
+	<select id="viewInqureyList" parameterType="hashMap" resultType="hashMap">
+		select * from
+			(select rownum as no, list.inquiry_no, list.writer,list.title,list.write_date,list.inquiry_count
+			    from (select * from inquiry
+			            where title like '%' || #{search} || '%'
+			            order by inqurey_no asc) list) inquiry
+		where ceil(inquiry.no / 5) = #{pageNo}
+	</select>
+	<select id="selectInqureyList" resultType="int">
+		select count(*) from inquiry
+	</select>
+	<update id="updateInqureyCount" parameterType="int">
+		update inquiry set inquiry_count = inquiry_count + 1 where inquiry_no = #{inqureyNo}
+	</update>
+	<select id="selectInqurey" resultMap="inqurey" parameterType="int">
+		select inquiry_no,writer,title,write_date,inquiry_count,content
+		from inquiry where inquiry_no = #{inqureyNo}
+	</select>
+</mapper>

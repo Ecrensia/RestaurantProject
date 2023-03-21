@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1대1 문의 글쓰기</title>
+    <link rel="stylesheet" href="../../css/inqurey/inqurey_write.css">
+    <script src="../../lib/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script src="../../lib/ckeditor.js"></script>
+    <script src="../../js/inqurey/inqurey_writer.js"></script>
+    <!-- 1대1 문의 글쓰기 -->
+    <!-- ajex backend 영역 -->
+</head>
+<body>
+    <header>
+        <div id="header-main-container">
+            <div id="header-logo"><img src="../../source/img/logo.png" alt="logo"></div>
+            <div id="header-sub-container">
+                <div id="login"><a href="#">로그인</a></div>
+                <nav id="header-nav-main">
+                    <ul class="header-largeMenu">
+                        <li><a href="#">메뉴소개</a></li>
+                        <li><a href="#">오더</a></li>
+                        <li><a href="#">매장소개</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                    <div id="header-nav-sub">
+                        <ul class="header-smallMenu">
+                            <li><a href="#">전체메뉴</a></li>
+                            <li><a href="#">인기메뉴</a></li>
+                            <li><a href="#">세트메뉴</a></li>
+                            <li><a href="#">사이드 & 음료</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">오더</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">매장검색</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="main_container">
+        <section>
+            <article>
+                <h2>1대1 문의 글쓰기</h2>
+                <form action="post">
+                    <p>문의 유형
+                        <select id="request">
+                            <option value="1">예약 문의</option>
+                            <option value="2">쿠폰 문의</option>
+                            <option value="3">기타</option>
+                        </select>
+                    </p>
+                    <p class="txt_name">제목
+                        <input type="text" placeholder="내용 입력" class="name">
+                    </p>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <p>이메일
+                        <input type="text" class="id_write"> @
+                        <input type="text" class="mail_write" value="gamil.com">
+                        <select name="" id="mail">
+                            <option value="0">gamil.com</option>
+                            <option value="1">naver.com</option>
+                            <option value="2">kakao.com</option>
+                            <option value="3">nate.com</option>
+                            <option value="4">직접 입력</option>
+                        </select>
+                    </p>
+                    <p>휴대폰
+                        <input type="tel" placeholder="-를 빼고 입력하세요" id="tel">
+                    </p>
+                    <p>비밀번호
+                        <input type="text" class="passwd">
+                        <input type="checkbox" class="chk"><span class="non">비공개</span>
+                    </p>
+                    <button class="update_button">글작성</button>
+                </form>
+            </article>
+        </section>
+    </div>
+    <footer>
+        <div id="footer-container">
+            <p>브랜드명<p>
+            <p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+            <p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+            <p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+            <p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

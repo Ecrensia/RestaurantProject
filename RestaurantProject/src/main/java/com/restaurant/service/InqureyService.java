@@ -1,0 +1,42 @@
+package com.restaurant.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.restaurant.dto.InqureyDTO;
+import com.restaurant.mapper.InqureyMapper;
+
+@Service
+public class InqureyService {
+	private InqureyMapper mapper;
+	
+	public InqureyService(InqureyMapper mapper) {
+		this.mapper = mapper;
+	}
+
+	public List<HashMap<String, Object>> viewInqureyList(int pageNo, String search) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("pageNo", pageNo);
+		map.put("search", search);
+		
+		return mapper.viewInqureyList(map);
+	}
+
+	public int selectInqureyList() {
+		return mapper.selectInqureyList();
+	}
+
+	public void updateInqureyCount(int inqureyNo) {
+		mapper.updateInqureyCount(inqureyNo);
+		
+	}
+
+	public InqureyDTO selectInqurey(int inqureyNo) {
+		return mapper.selectInqurey(inqureyNo);
+	}
+
+	
+	
+}
