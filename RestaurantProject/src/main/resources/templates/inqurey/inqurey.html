@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1대1 문의</title>
-    <!--1대1 문의 페이지 html-->
-    <!-- ajex backend 영역 -->
     <link rel="stylesheet" href="/css/inqurey/inqurey.css">
     <script src="/lib/jquery-3.6.3.js"></script>
     <script src="/lib/jquery-ui.js"></script>
@@ -72,7 +70,7 @@
                             </select>
                         </div>    
                           <div class="box2">
-                            <a href="#" ><button>글쓰기</button></a>
+                            <a href="/inqureywrite" ><button>글쓰기</button></a>
                           </div>  
                     </div>
                     <table>
@@ -84,11 +82,11 @@
                             <th>조회수</th>
                         </tr>
                         <tr th:each="inqurey : ${list}">
-                            <td>[[${inqurey.INQUREY_NO}]]</td>  
+                            <td>[[${inqurey.INQUIRY_NO}]]</td>  
                             <td>[[${inqurey.WRITER}]]</td>
-                            <td><a th:href="@{/inqurey/InqureyContent/{InqureyNo}(InqureyNo=${inqurey.INQUREY_NO})}">[[${inqurey.TITLE}]]</a></td>
+                            <td><a th:href="@{/inqurey/InqureyContent/{InqureyNo}(InqureyNo=${inqurey.INQUIRY_NO})}">[[${inqurey.TITLE}]]</a></td>
                             <td>[[${inqurey.WRITE_DATE}]]</td>
-                            <td>[[${inqurey.INQUREY_COUNT}]]</td>
+                            <td>[[${inqurey.INQUIRY_COUNT}]]</td>
                         </tr>
                     </table>
                     <div class="page_move_container">

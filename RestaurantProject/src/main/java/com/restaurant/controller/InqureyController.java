@@ -1,19 +1,24 @@
 package com.restaurant.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.restaurant.dto.InqureyDTO;
+import com.restaurant.dto.InqureyWriteDTO;
 import com.restaurant.service.InqureyService;
 import com.restaurant.vo.PaggingVO;
 
@@ -68,5 +73,31 @@ public class InqureyController {
 		view.addObject("inqurey", dto);
 		
 		return view;
+	}
+	
+	@RequestMapping("/inqureywrite")
+	public String inqureyWrite() {
+		
+		return "inqurey/inqurey_write";
+	}
+	//회원테이블 조인 
+	@RequestMapping("/inqureywrite/add")	
+	public String inqureyWriteAdd(InqureyWriteDTO dto) {
+		int inqureyNo = inqureyService.selectInqureyBoard();
+		String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+		
+		dto.setInqureyNo(inqureyNo);
+		dto.setInqureyDate(now);
+		
+		if(dto.getSetPW() == null) {
+			dto.setSetPW("N");
+			dto.setInqureyPW(null);
+		} else {
+			dto.setSetPW("Y");
+		}
+		
+		inqureyService.inqureyWriteAdd(dto);
+		
+		return "redirect:/inqurey";
 	}
 }
