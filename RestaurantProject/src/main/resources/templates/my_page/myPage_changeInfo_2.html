@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보변경</title>
+    <link rel="stylesheet" href="../../CSS/my_page/myPage_changeInfo_2.css">
+    <script src="../../lib/jquery-3.6.3.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="../../JS/my_page/myPage_changeInfo_2.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header-main-container">
+            <div id="header-logo"><img src="../../source/img/logo.png" alt="logo"></div>
+            <div id="header-sub-container">
+                <div id="login"><a href="#">로그인</a></div>
+                <nav id="header-nav-main">
+                    <ul class="header-largeMenu">
+                        <li><a href="#">메뉴소개</a></li>
+                        <li><a href="#">오더</a></li>
+                        <li><a href="#">매장소개</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                    <div id="header-nav-sub">
+                        <ul class="header-smallMenu">
+                            <li><a href="#">전체메뉴</a></li>
+                            <li><a href="#">인기메뉴</a></li>
+                            <li><a href="#">세트메뉴</a></li>
+                            <li><a href="#">사이드 & 음료</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">오더</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">매장검색</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section>
+        <h2>MY PAGE</h2>
+        <form action="">
+            <article class="changeInfo_box2">
+
+                <div class="default_info">
+                    <div id="title">
+                        <p>기본정보</p>
+                    </div>
+                    <div class="default_info_content">
+                        <div class="e_mail">
+                            <span id="sub_title">
+                                <p>이메일</p>
+                            </span>
+                            <span>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" readonly>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </span>
+                        </div>
+                        <div class="name">
+                            <span id="sub_title">
+                                <p>이름</p>
+                            </span>
+                            <span>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" readonly>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </span>
+                        </div>
+                        <div class="phone_number">
+                            <span id="sub_title">
+                                <p>핸드폰 번호</p>
+                            </span>
+                            <span>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" readonly>
+                                        </td>
+                                        <td>
+                                            <div class="btn_change1">변경</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </span>
+                            <span id="change_box_1">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text">
+                                        </td>
+                                        <td>
+                                            <div class="btn_change1_btn">확인</div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </span>
+                        </div>
+                        <div class="address">
+                            <span id="sub_title">
+                                <p>주소</p>
+                            </span>
+                            <span>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" readonly>
+                                        </td>
+                                        <td>
+                                            <div class="btn_change2">변경</div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </span>
+                            <span id="change_box_2">
+                                <div class="search_address">
+                                    <p>주소검색</p>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="select_info">
+                    <div id="title">
+                        <p>선택 정보</p>
+                    </div>
+                    <div class="select_info_content">
+                        <span id="sub_title">
+                            <p>성별</p>
+                        </span>
+                        <div class="gender">
+                            <span>
+                                <label for="">
+                                    <input type="radio">선택안함
+                                </label>
+                            </span>
+                            <span>
+                                <label for="">
+                                    <input type="radio">남
+                                </label>
+                            </span>
+                            <span>
+                                <label for="">
+                                    <input type="radio">여
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="select_info_content">
+                        <span id="sub_title">
+                            <p>생년월일</p>
+                        </span>
+                        <div class="birthday">
+                            <span>
+                                <label for="">
+                                    <input type="radio">선택안함
+                                </label>
+                            </span>
+
+                            <span>
+                                <label for="">
+                                    <input type="radio">
+                                    <input type="date" value="2000-01-01">
+                                </label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="marketing">
+                    <div id="title">
+                        <p>마케팅 수신동의</p>
+                    </div>
+                    <div class="marketing_content">
+                        <span>
+                            <label for="">
+                                <input type="checkbox">마케팅 수신동의 1
+                            </label>
+                        </span>
+                        <br>
+                        <span>
+                            <label for="">
+                                <input type="checkbox">마케팅 수신동의 2
+                            </label>
+                        </span>
+                    </div>
+                </div>
+            </article>
+            <div class="button1">
+                <button class=".btn1">취소</button>
+                <button class=".btn2">확인</button>
+            </div>
+        </form>
+        <div class="button2">
+            <button>회원 탈퇴</button>
+        </div>
+    </section>
+
+    <div class="modal1">
+        <div class="modal_content">
+            <div class="title">
+                <h1>이용약관</h1>
+            </div>
+            <div class="content_space">
+                <p>변경완료</p>
+            </div>
+            <div class="button">
+                <button class="modal1_button">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer-container">
+            <p>브랜드명<p>
+            <p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+            <p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+            <p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+            <p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+        </div>
+    </footer>
+</body>
+
+</html>
