@@ -1,0 +1,173 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main_container2{
+    width: 566px;
+    height: 750px;
+    border: 1px solid white;
+    background-color: #F67A3E;
+    
+}
+.text{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+    width: 473px;
+    height: 40px;
+    color: #F67A3E;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 10px 10px;
+    margin:40px;
+    font-weight: bold;
+}
+.text_container{
+    color: #F67A3E;
+    width: 473px;
+    height: 226px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 10px 10px;
+    margin: 40px;
+}
+.cow{
+    font-size: 15px;
+    text-align: center;
+    margin-top: -50px;
+}
+.cow1{
+    margin-right: 120px;
+}
+
+   
+.pig{
+    font-size: 15px;
+    text-align: center;
+    margin-top: -20px;
+    margin-right: 60px;
+}
+.pig1{
+    margin-right: 45px;
+}
+
+
+.chicken{
+    font-size: 15px;
+
+    text-align: center;
+    margin-top: -30px;
+}
+.chicken1{
+    margin-right: 120px;
+}
+.chicken2{
+    margin-right: 110px;
+}
+.chicken3{
+    margin-right: 95px; 
+}
+
+.origin{
+    font-size: 20px;
+    font-weight: bold;
+}
+.cow_img{
+    width: 50px;
+    height: 50px;
+}
+
+.cow_img img{
+    width: 40px;
+    height: 40px;
+    margin-left: 100px;
+}
+.pig_img{
+    width: 50px;
+    height: 50px;
+}
+.pig_img img{
+    width: 40px;
+    height: 40px;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+.chicken_img{
+    width: 50px;
+    height: 50px;
+}
+.chicken_img img{
+    width: 40px;
+    height: 40px;
+    margin-left: 100px;
+    margin-top: 30px;
+}
+.nutrition{
+    width: 473px;
+    height: 181px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 10px 10px;
+    margin: 40px;
+    font-weight: bold;
+}
+.nutrition p{
+    color: #F67A3E;
+    font-size: 20px;
+    font-weight: bold;
+}
+.allergy{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 473px;
+    height: 63px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 10px 10px;
+    margin: 40px;
+    margin-top: -30px;
+}
+.allergy p{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 25px;
+    color: #F67A3E;
+    font-weight: bold;
+}
+.box{
+    font-size: 15px;
+    color: #F67A3E;
+    padding: 10px;
+}
+/*#plus{
+    width: 40px;
+    height: 40px;
+    margin-top: 16px;
+}*/
+#close{
+    width: 25px;
+    height: 25px;
+    margin-top: 4px;
+    float: right;
+    margin-top: -122px;
+}
+.allergy2{
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 10px 10px;
+    color: #F67A3E;
+    width: 451px;
+    margin-left: 42px;
+    padding: 10px;
+    margin-top: -22px;
+}
+
+
+
+
+
+
+
