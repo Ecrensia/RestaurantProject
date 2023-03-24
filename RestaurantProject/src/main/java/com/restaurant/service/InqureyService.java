@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.restaurant.dto.InqureyDTO;
+import com.restaurant.dto.InqureyWriteDTO;
 import com.restaurant.mapper.InqureyMapper;
 
 @Service
@@ -36,6 +37,24 @@ public class InqureyService {
 	public InqureyDTO selectInqurey(int inqureyNo) {
 		return mapper.selectInqurey(inqureyNo);
 	}
+
+//	public int insertBoard(InqureyDTO dto) {
+//		int inqureyNo = mapper.selectInqureyBoard();
+//		dto.setInqureyNo(inqureyNo);
+//		mapper.insertBoard(dto);
+//		return inqureyNo;
+//	}
+
+	public int selectInqureyBoard() {
+		return mapper.selectInqureyBoard();
+	}
+
+	public int inqureyWriteAdd(InqureyWriteDTO dto) {
+		return mapper.inqureyWriteAdd(dto);
+	}
+
+
+
 
 	
 	

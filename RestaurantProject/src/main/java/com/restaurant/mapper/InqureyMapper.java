@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.restaurant.dto.InqureyDTO;
+import com.restaurant.dto.InqureyWriteDTO;
 
 @Mapper
 public interface InqureyMapper {
@@ -17,5 +18,11 @@ public interface InqureyMapper {
 	void updateInqureyCount(int inqureyNo);
 
 	InqureyDTO selectInqurey(int inqureyNo);
+
+	int selectInqureyBoard();
+
+	void insertBoard(InqureyDTO dto);
+
+	int inqureyWriteAdd(InqureyWriteDTO dto);
 
 }

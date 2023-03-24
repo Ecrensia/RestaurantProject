@@ -36,6 +36,21 @@ public class InqureyDTO {
 		this.answerDate = answerDate;
 		this.answerContent = answerContent;
 	}
+	
+	
+
+	public InqureyDTO(int inqureyNo, String inqureyWriter, String inqureyTitle, String inqureyContent,
+			String inqureyDate, int inqureyCount, char setPW, int inqureyPW) {
+		super();
+		this.inqureyNo = inqureyNo;
+		this.inqureyWriter = inqureyWriter;
+		this.inqureyTitle = inqureyTitle;
+		this.inqureyContent = inqureyContent;
+		this.inqureyDate = inqureyDate;
+		this.inqureyCount = inqureyCount;
+		this.setPW = setPW;
+		this.inqureyPW = inqureyPW;
+	}
 
 	public int getInqureyNo() {
 		return inqureyNo;
