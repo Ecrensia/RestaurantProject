@@ -1,5 +1,7 @@
 package com.restaurant.dto;
 
+import java.sql.Date;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("userInfo")
@@ -8,18 +10,18 @@ public class UserInfoDTO {
 	private String passwd;
 	private String userName;
 	private String nick;
-	private char gender;
+	private String gender;
 	private String adress;
 	private String adressDetail;
 	private String tel;
-	private int birthday;
+	private String birthday;
 	private String createUser;
-	private char agreementLogin;
+	private String agreementLogin;
 	
 	public UserInfoDTO() { }
 
-	public UserInfoDTO(String userId, String passwd, String userName, String nick, char gender, String adress,
-			String adressDetail, String tel, int birthday, String createUser, char agreementLogin) {
+	public UserInfoDTO(String userId, String passwd, String userName, String nick, String gender, String adress,
+			String adressDetail, String tel, String birthday, String createUser, String agreementLogin) {
 		super();
 		this.userId = userId;
 		this.passwd = passwd;
@@ -66,11 +68,11 @@ public class UserInfoDTO {
 		this.nick = nick;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -98,11 +100,11 @@ public class UserInfoDTO {
 		this.tel = tel;
 	}
 
-	public int getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(int birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
@@ -114,11 +116,11 @@ public class UserInfoDTO {
 		this.createUser = createUser;
 	}
 
-	public char getAgreementLogin() {
+	public String getAgreementLogin() {
 		return agreementLogin;
 	}
 
-	public void setAgreementLogin(char agreementLogin) {
+	public void setAgreementLogin(String agreementLogin) {
 		this.agreementLogin = agreementLogin;
 	}
 

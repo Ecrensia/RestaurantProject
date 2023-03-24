@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탈퇴</title>
+    <link rel="stylesheet" href="../../CSS/my_page/escape.css">
+    <script src="../../lib/jquery-3.6.3.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
+    <script src="../../JS/my_page/escape.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="header-main-container">
+            <div id="header-logo"><img src="../../source/img/logo.png" alt="logo"></div>
+            <div id="header-sub-container">
+                <div id="login"><a href="#">로그인</a></div>
+                <nav id="header-nav-main">
+                    <ul class="header-largeMenu">
+                        <li><a href="#">메뉴소개</a></li>
+                        <li><a href="#">오더</a></li>
+                        <li><a href="#">매장소개</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+                    <div id="header-nav-sub">
+                        <ul class="header-smallMenu">
+                            <li><a href="#">전체메뉴</a></li>
+                            <li><a href="#">인기메뉴</a></li>
+                            <li><a href="#">세트메뉴</a></li>
+                            <li><a href="#">사이드 & 음료</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">오더</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">매장검색</a></li>
+                        </ul>
+                        <ul class="header-smallMenu">
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">1:1 문의</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section>
+        <h2>탈퇴하기</h2>
+        <form action="">
+            <article class="escape_box1">
+                <p class="sub_title">탈퇴 유의사항</p>
+                <div class="escape_box1_content">
+                    <p>아래 유의사항을 반드시 확인하세요.</p>
+                    <ol>
+                        <li>회원 탈퇴한 날로부터 90일 이후 회원가입이 가능합니다.</li>
+                        <li>탈퇴 시 고객님의 정보는 전자상거래 상에서의 소비자 보호 법률에 의거한 버거킹의 개인정보보호정책에 따라 관리됩니다.</li>
+                        <li>탈퇴 시 고객님의 개인정보 및 쿠폰 정보는 모두 삭제되어 더 이상 혜택을 받을 수 없으며, 재가입 이후에도 복구가 불가합니다.</li>
+                        <li>탈퇴 후 어떠한 방법으로도 기존의 개인정보를 복원할 수 없습니다.(단 결제 내역은 5년까지 보관)</li>
+                        <li>
+                            삭제되는 기록은 다음과 같습니다<br>
+                            - 휴대폰번호, MY배달지, 멤버십, 쿠폰, 주문이력
+                        </li>
+                    </ol>
+                </div>
+            </article>
+            <article class="escape_box2">
+                <p class="sub_title">탈퇴 사항</p>
+                <div class="select_div">
+                    <select name="" id="">
+                        <option value="" selected>탈퇴 사유 선택</option>
+                        <option value="">개인정보 보호</option>
+                        <option value="">아이디 변경</option>
+                        <option value="">사이트 이용불만</option>
+                    </select>
+                </div>
+            </article>
+            <article class="escape_box3">
+                <p class="sub_title">계정 확인</p>
+                <div class="email_div">
+                    <p>abcdefg@naver.com</p>
+                </div>
+                <hr>
+            </article>
+            <div class="checkbox_div">
+                <input type="checkbox" id="escape_check">
+                <label for="escape_check">위 내용 확인 후 탈퇴하겠습니다.(필수)</label>
+            </div>
+            <div class="button_div">
+                <button class="btn1">취소</button>
+                <button class="btn2">탈퇴완료</button>
+            </div>
+        </form>
+    </section>
+    
+    <div class="modal1">
+        <div class="modal_content">
+            
+            <div class="content_space">
+                <p>지금까지 이용해주셔서 감사합니다.</p>
+            </div>
+            <div class="button">
+                <button class="modal1_button">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footer-container">
+            <p>브랜드명<p>
+            <p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+            <p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+            <p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+            <p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+        </div>
+    </footer>
+</body>
+
+</html>

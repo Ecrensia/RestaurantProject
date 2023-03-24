@@ -11,4 +11,8 @@ public interface UserInfoMapper {
 
 	UserInfoDTO login(HashMap<String, Object> map);
 
+	String selectIdCheck(String idVal);
+
+	int insertMemberInfo(UserInfoDTO dto);
+
 }

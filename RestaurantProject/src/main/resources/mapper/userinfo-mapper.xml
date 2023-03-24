@@ -21,4 +21,11 @@
 	<select id="login" parameterType="hashmap" resultMap="userInfo">
   		select * from userinfo where user_id like #{id} and passwd like #{passwd}
   	</select>
+  	<select id="selectIdCheck" parameterType="string" resultType="string">
+  		select user_id from userinfo where user_id = #{idVal}
+  	</select>
+  	<insert id="insertMemberInfo" parameterType="userInfo">
+  		insert into userInfo(user_id, passwd, user_name, gender, tel, birthday, create_user, agreement_login) 
+  			values(#{userId},#{passwd},#{userName},#{gender},#{tel},#{birthday},#{createUser},#{agreementLogin})
+  	</insert>
 </mapper>
