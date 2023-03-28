@@ -26,11 +26,16 @@ public class UserInfoController {
 	public UserInfoController(UserInfoService service) {
 		this.service = service;
 	}
-	
 	@RequestMapping("/")
+	public String index() {
+		return "main/index";
+	}
+	
+	@RequestMapping("/loginPage")
 	public String loginPage() {
 		return "main/login_page";
 	}
+
 	
 	@RequestMapping("/myPage_1")
 	public String myPage() {
@@ -51,10 +56,6 @@ public class UserInfoController {
 			return "redirect:/";
 	}
 	
-	@RequestMapping("/main")
-	public String main() {
-		return "main/main";
-	}
 	
 	@RequestMapping("/signup1")
 	public String signup1() {
