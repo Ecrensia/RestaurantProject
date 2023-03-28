@@ -1,0 +1,110 @@
+<header>
+    <div id="header-main-container">
+        <div id="header-logo"><img src="../../source/img/logo.png" alt="logo"></div>
+        <div id="header-sub-container">
+            <div id="login"><a href="/">로그인</a></div>
+            <nav id="header-nav-main">
+                <ul class="header-largeMenu">
+                    <li><a href="#">메뉴소개</a></li>
+                    <li><a href="#">오더</a></li>
+                    <li><a href="#">매장소개</a></li>
+                    <li><a href="#">고객센터</a></li>
+                </ul>
+                <div id="header-nav-sub">
+                    <ul class="header-smallMenu">
+                        <li><a href="/menu/all">전체메뉴</a></li>
+                        <li><a href="#">인기메뉴</a></li>
+                        <li><a href="#">세트메뉴</a></li>
+                        <li><a href="#">사이드 & 음료</a></li>
+                    </ul>
+                    <ul class="header-smallMenu">
+                        <li><a href="#">오더</a></li>
+                    </ul>
+                    <ul class="header-smallMenu">
+                        <li><a href="#">매장검색</a></li>
+                    </ul>
+                    <ul class="header-smallMenu">
+                        <li><a href="/notice">공지사항</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/inqurey">1:1 문의</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+
+header {
+    width: 100%;
+    background-color: #F67A3E;
+    position: fixed;
+    z-index: 100;
+}
+#header-main-container {
+    width: 1200px;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+}
+#header-logo {
+    width: 140px;
+    height: 120px;
+    text-align: center;
+}
+#header-sub-container {
+    width: 1060px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#login {
+    width: 1060px;
+    height: 60px;
+    text-align: end;
+}
+#header-logo > img {
+    padding-top: 29.71px;
+    width: 100px;
+}
+#header-nav-main {
+    width: 1060px;
+    height: 60px;
+    overflow: hidden;
+}
+#header-nav-main:hover {
+    height: 260px;
+}
+ul.header-largeMenu {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+}
+ul.header-largeMenu a {
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 30px;
+    padding: 15px 0;
+}
+#header-nav-sub {
+    display: flex;
+    flex-flow: row nowrap;
+}
+ul.header-smallMenu {
+    display: flex;
+    flex-flow: column nowrap;
+    list-style-type: none;
+}
+ul.header-smallMenu a {
+    line-height: 25px;
+    font-size: 25px;
+    width: 265px;
+    padding: 12.5px 0;
+}
+#header-nav-main a:not(#login) {
+    color: black;
+    text-align: center;
+    display: inline-block;
+    width: 265px;
+    text-decoration: none;
+}
