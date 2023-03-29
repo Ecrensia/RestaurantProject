@@ -1,27 +1,27 @@
 <header>
     <div id="header-main-container">
-        <div id="header-logo"><img src="../../source/img/logo.png" alt="logo"></div>
+        <div id="header-logo"><a href="/"><img src="/img/common/logo.png" alt="logo"></a></div>
         <div id="header-sub-container">
-            <div id="login"><a href="/">로그인</a></div>
+            <div id="login"><a href="/loginPage">로그인</a></div>
             <nav id="header-nav-main">
                 <ul class="header-largeMenu">
                     <li><a href="#">메뉴소개</a></li>
-                    <li><a href="#">오더</a></li>
+                    <li><a href="/order">오더</a></li>
                     <li><a href="#">매장소개</a></li>
                     <li><a href="#">고객센터</a></li>
                 </ul>
                 <div id="header-nav-sub">
                     <ul class="header-smallMenu">
                         <li><a href="/menu/all">전체메뉴</a></li>
-                        <li><a href="#">인기메뉴</a></li>
-                        <li><a href="#">세트메뉴</a></li>
-                        <li><a href="#">사이드 & 음료</a></li>
+                        <li><a href="/menu/popularmenu">인기메뉴</a></li>
+                        <li><a href="/menu/setmenu">세트메뉴</a></li>
+                        <li><a href="/menu/side">사이드 & 음료</a></li>
                     </ul>
                     <ul class="header-smallMenu">
-                        <li><a href="#">오더</a></li>
+                        <li><a href="/order">오더</a></li>
                     </ul>
                     <ul class="header-smallMenu">
-                        <li><a href="#">매장검색</a></li>
+                        <li><a href="/store">매장검색</a></li>
                     </ul>
                     <ul class="header-smallMenu">
                         <li><a href="/notice">공지사항</a></li>
@@ -35,7 +35,7 @@
 </header>
 
 
-
+<style>
 header {
     width: 100%;
     background-color: #F67A3E;
@@ -63,7 +63,7 @@ header {
     height: 60px;
     text-align: end;
 }
-#header-logo > img {
+#header-logo  img {
     padding-top: 29.71px;
     width: 100px;
 }
@@ -108,3 +108,4 @@ ul.header-smallMenu a {
     width: 265px;
     text-decoration: none;
 }
+</style>

@@ -11,41 +11,7 @@
     <script src="/js/inqurey/inqurey_writer.js"></script>
 </head>
 <body>
-    <header>
-        <div id="header-main-container">
-            <div id="header-logo"><img src="../../source/img/logo.png" alt="logo"></div>
-            <div id="header-sub-container">
-                <div id="login"><a href="#">로그인</a></div>
-                <nav id="header-nav-main">
-                    <ul class="header-largeMenu">
-                        <li><a href="#">메뉴소개</a></li>
-                        <li><a href="#">오더</a></li>
-                        <li><a href="#">매장소개</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                    <div id="header-nav-sub">
-                        <ul class="header-smallMenu">
-                            <li><a href="#">전체메뉴</a></li>
-                            <li><a href="#">인기메뉴</a></li>
-                            <li><a href="#">세트메뉴</a></li>
-                            <li><a href="#">사이드 & 음료</a></li>
-                        </ul>
-                        <ul class="header-smallMenu">
-                            <li><a href="#">오더</a></li>
-                        </ul>
-                        <ul class="header-smallMenu">
-                            <li><a href="#">매장검색</a></li>
-                        </ul>
-                        <ul class="header-smallMenu">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">1:1 문의</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </header>
+	<th:block th:include="/fragments/header.html"></th:block>
     <div class="main_container">
         <section>
             <article>

@@ -23,4 +23,12 @@ public class UserInfoService {
 		return mapper.login(map);
 	}
 
+	public String selectIdCheck(String idVal) {
+		return mapper.selectIdCheck(idVal);
+	}
+
+	public int insertMemberInfo(UserInfoDTO dto) {
+		return mapper.insertMemberInfo(dto);
+	}
+
 }
