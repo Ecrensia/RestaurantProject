@@ -14,6 +14,22 @@
     $(function() {
 		$('.search_btn').click(function() {
 			location.href='/notice?pageNo=' + $('.current_page').text() + '&search=' + $('.search').val();
+			
+			$.ajax({
+				url : '/notice',
+				data : 'val='+search,
+				type : 'post',
+				dataType: 'json',
+				success : function (r) {
+					let tag ='';
+					for(i=0;i<r.length;i++){
+						console.log(r[i].NOTICE_NO);
+						tag += '<p>';
+						tag += /*<![CDATA[*/`<input type="text" class="search" th:value="${search}">'>`/*]]>*/;
+						tag += '</p>';
+					}
+				}
+			});
 		});
 	})
     </script>
