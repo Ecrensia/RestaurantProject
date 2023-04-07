@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*관리자 로그인 페이지 CSS*/
+/*1대1 문의 목록 관리 CSS*/
 * {
     margin: 0px;
     padding: 0px;
@@ -68,93 +68,89 @@ body {
     padding: 0px 40px 40px 40px;
     border-width: 0px 1px 1px 1px;
 }
-#manager-login-box{
-    width: 900px;
-    height: 450px;
-    margin-left: 350px;
-    padding-top: 200px;
-}
-#manager-login-box > p{
-    font-size: 30px;
-    font-weight: bold;
-    padding-bottom: 10px;
-}
-#login-line > hr{
-    border: 2px solid black;
-}
-#box-main{
-    padding-left: 100px;
-    padding-right: 100px;
-}
-#login-id-box{
-    display: flex;
-    flex-direction: row;
-}
-#login-id-box > p{
+#list-selector > p{
     font-size: 20px;
     font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    margin-right: 30px;
+    margin-left: 100px;
 }
-#login-id-box > input{
-    width: 370px;
-    height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-left: 10px;
-    font-size: 15px;
-    margin-left: 50px;
-}
-#login-pass-box{
+#search-bar{
     display: flex;
     flex-direction: row;
+    margin-top: 50px;
+    margin-left: 100px;
 }
-#login-pass-box > p{
+#search-bar > input{
+    width: 1200px;
+    height: 100px;
+    font-size: 20px;
+    text-align: right;
+    padding-right: 10px;
+    box-sizing: border-box;
+}
+#search-button{
+    width: 150px;
+    height: 100px;
+    box-sizing: border-box;
+    background-color: #d9d9d9;
+}
+#search-button > button{
+    width: 150px;
+    height: 100px;
     font-size: 20px;
     font-weight: bold;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    margin-right: 30px;
 }
-#login-pass-box > input{
-    width: 370px;
-    height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 30px;
-    padding-left: 10px;
-    font-size: 15px;
+#all-select{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
 }
-#warming{
+#all-select > input{
+    width: 20px;
+    height: 20px;
     margin-top: 30px;
-    color: #ff0000;
-    font-size: 15px;
+    margin-right: 20px;
+}
+#all-select > p {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-right: 120px;
+    
+}
+#list-inventory{
+    width: 1350px;
+    height: 400px;
+    margin-top: 35px;
+    margin-left: 100px;
+    border: 1px solid black;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+table{
+    width: 1350px;
+    border-collapse: collapse;
+}
+tr td{
+    font-size: 20px;
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+.list-no{
     font-weight: bold;
-    padding-bottom: 30px;
 }
-#msg1{
-    margin-left: 245px;
-    margin-bottom: 10px;
+
+#remove-list-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
 }
-#msg2{
-    margin-left: 245px;
-}
-#login-button{
-    margin-left: 320px;
-}
-#login-button  button{
-    width: 230px;
+#remove-list-button > #remove-button{
+    width: 200px;
     height: 50px;
     background-color: #d9d9d9;
-    border: none;
-    font-size: 30px;
-    font-weight: bold;
-}
-#service-message{
     margin-top: 30px;
-    margin-left: 300px;
-    color: #999999;
-    font-size: 15px;
-    font-weight: bold;
+    margin-right: 110px;
+    text-align: center;
+    padding-top: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
 }

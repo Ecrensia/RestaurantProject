@@ -15,7 +15,8 @@ public class StoreController {
 	}
 	@RequestMapping("/store")    //매장찾기
 	public String store() {
-		return "/store";
+		
+		return "find_store/store";
 	}
 	
  
