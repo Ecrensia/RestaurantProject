@@ -100,13 +100,15 @@ ul.header-smallMenu a {
     text-align: center;
  
 }
-.menu_img > img{
+.menu_img  img{
     width: 100px;
     height: 100px;
 }
-.menu_img > p{
+.menu_img  p{
     color: #F67A3E;
     font-size: 15px;
+    S
+    
 } 
 .sub_container{
     width: 1200px;
