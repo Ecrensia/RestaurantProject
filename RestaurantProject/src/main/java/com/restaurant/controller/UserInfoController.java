@@ -1,9 +1,7 @@
 package com.restaurant.controller;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.restaurant.dto.UserInfoDTO;
 import com.restaurant.service.UserInfoService;
@@ -44,16 +43,16 @@ public class UserInfoController {
 	
 	
 	@RequestMapping("/login")
-	public String login(String id, String passwd,HttpSession session) {
+	public String login(String id, String passwd,HttpSession session, RedirectAttributes rttr) {
 		
 		UserInfoDTO dto = service.login(id,passwd);
-		session.setAttribute("dto", dto);
 		
 		
-		if(dto != null)
-			return "redirect:/main";
-		else
-			return "redirect:/";
+		if(dto != null) {
+			session.setAttribute("dto", dto);
+			rttr.addFlashAttribute("username",dto.getUserName());
+		}
+		return "redirect:/";
 	}
 	
 	
