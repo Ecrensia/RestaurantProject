@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1대1 문의 목록 관리</title>
+    <link rel="stylesheet" href="/css/customer_manage/inqurey_list.css">
+    <script src="/lib/jquery-3.6.3.js"></script>
+    <script src="/js/manager/customer_manage_list.js"></script>
+</head>
+<body>
+   <th:block th:include="/fragments/side_menu.html"></th:block>
+    <div id="title-main-space">
+        <div id="title-sub-space">
+            <p id="title">페이지별 제목영역</p>
+            <hr>
+        </div>
+    </div>
+    <div id="empty"></div>
+    <div id="content-space">
+            <div id="list-selector">
+                <p>특정 단어를 포함한 게시물 검색</p>
+                <form action="" id="search-form-box">
+                    <div id="search-bar">
+                        <input type="text" placeholder="검색하실 단어를 입력해주세요">
+                        <div id="search-button">
+                            <button type="button">검색</button>
+                        </div>
+                    </div>
+                </form>
+            <div id="all-select">
+                <input type="checkbox">
+                <p>전체 선택</p>
+            </div>
+            <div id="list-inventory">
+                <table>
+                    <tr th:each="inqurey : ${list}">
+                        <td><input type="checkbox"></td>
+                        <td class="list-no">[[${inqurey.INQUIRY_NO}]]</td>
+                        <td>[[${inqurey.TITLE}]]</td>
+                        <td>[[${inqurey.WRITE_DATE}]]</td>
+                        <td>[[${inqurey.WRITER}]]</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <form action="" id="remove-form-box">
+            <div id="remove-list-button">
+                <div id="remove-button">문의 게시글 삭제</div>
+            </div>
+        </form>    
+    </div>
+</body>
+</html>

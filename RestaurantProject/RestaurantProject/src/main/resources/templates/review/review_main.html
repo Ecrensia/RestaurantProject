@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰메인</title>
+    <link rel="stylesheet" href="/css/review/review_main.css">
+</head>
+<body>
+    
+       <th:block th:include="/fragments/header.html"></th:block>
+    <section>
+        <div class="main_container">
+            <div class="icon">
+                <img src="/img/review/icon/icon-review.png" alt="">
+            </div>
+            <div class="user">
+                <p>abcd1234</p>
+                <p class="font">2023.02.06</p>
+                <img src="/img/menu/menu/cheeseburger.png" alt="">
+                 <p class="score">★★★★★</p>
+                 <div class="text_box">
+                    <img src="/img/menu/menu/cheeseburger.png" alt="">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididnt eget nullam non.</p>
+                </div>
+            </div>
+            <div class="icon">
+                <img src="/img/review/icon/icon-review.png" alt="">
+            </div>
+            <div class="user">
+                <p>qwer1234</p>
+                <p class="font">2023.02.05</p>
+                <img src="/img/menu/menu/cheeseburger.png" alt="">
+                <p class="score">★★</p>
+                <div class="text_box">
+                    <img src="/img/menu/menu/cheeseburger.png" alt="">
+                    <p>빵이 너무 딱딱하고 재료가 신선하지 못합니다.</p>
+                </div>
+            </div>
+            <div class="icon">
+                <img src="/img/review/icon/icon-review.png" alt="">
+            </div>
+            <div class="user">
+                <p>zxcv1234</p>
+                <p class="font">2023.02.04</p>
+                <img src="/img/menu/menu/cheeseburger.png" alt="">
+                <p class="score">★★★★★</p>
+                <div class="text_box">
+                    <img src="/img/menu/menu/cheeseburger.png" alt="">
+                   <p>가성비 좋게 먹기 딱 좋은거 같습니다.</p>
+                </div>
+            </div>
+            <a href="/review/reviewwrite" id="btn_review">리뷰쓰기</a>
+
+            
+            
+        </div>
+    </section>
+    <footer>
+        <div id="footer-container">
+            <p>브랜드명<p>
+            <p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+            <p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+            <p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+            <p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+        </div>
+    </footer>
+</body>
+</html>
+                    
+

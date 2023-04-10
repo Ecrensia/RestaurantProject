@@ -1,0 +1,214 @@
+@charset "UTF-8";
+/* 1대1 문의 글쓰기 CSS */
+*{
+    margin: 0;
+    padding: 0;
+}
+header {
+    width: 100%;
+    background-color: #F67A3E;
+    position: fixed;
+    z-index: 100;
+}
+#header-main-container {
+    width: 1200px;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+}
+#header-logo {
+    width: 140px;
+    height: 120px;
+    text-align: center;
+}
+#header-sub-container {
+    width: 1060px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#login {
+    width: 1060px;
+    height: 60px;
+    text-align: end;
+}
+#header-logo > img {
+    padding-top: 29.71px;
+    width: 100px;
+}
+#header-nav-main {
+    width: 1060px;
+    height: 60px;
+    overflow: hidden;
+}
+#header-nav-main:hover {
+    height: 260px;
+}
+ul.header-largeMenu {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+}
+ul.header-largeMenu a {
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 30px;
+    padding: 15px 0;
+}
+#header-nav-sub {
+    display: flex;
+    flex-flow: row nowrap;
+}
+ul.header-smallMenu {
+    display: flex;
+    flex-flow: column nowrap;
+    list-style-type: none;
+}
+ul.header-smallMenu a {
+    line-height: 25px;
+    font-size: 25px;
+    width: 265px;
+    padding: 12.5px 0;
+}
+#header-nav-main a:not(#login) {
+    color: black;
+    text-align: center;
+    display: inline-block;
+    width: 265px;
+    text-decoration: none;
+}
+.main_container{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 120px;
+    margin-bottom: 10px;
+}
+section{
+    border: 1px solid black;
+}
+h2{
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+p{
+    margin-left: 50px;
+    font-size: 25px;
+}
+#request{
+    width: 200px;
+    height: 30px;
+    margin-left: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.name{
+    width: 500px;
+    height: 50px;
+    margin-left: 90px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    
+}
+.ck-editor__editable {
+    min-height: 500px;
+}
+.ck.ck-sticky-panel .ck-sticky-panel__content_sticky {
+    z-index: var(--ck-z-modal)sticky; 
+}
+.post_write{
+    width: 800px;
+    height: 500px;
+    margin-left: 90px;
+    text-align: top;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.id_write{
+    width: 200px;
+    height: 30px;
+    margin-left: 65px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.mail_write{
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;   
+}
+#mail{
+     width: 150px;
+     height: 30px;
+     border-radius: 10px;
+}
+#tel{
+    margin-left: 65px;
+    width:  500px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.passwd{
+    margin-left: 40px;
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.non{
+    font-size: 16px;
+}
+.update_button{
+    width: 120px;
+    height: 60px;
+    margin-left: 550px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #F67A3E;
+    border: none;
+    color: white;
+}
+footer {
+    width: 100%;
+    background-color: #F67A3E;
+}
+#footer-container {
+    width: 1200px;
+    padding: 40px 0px;
+    margin: 0px auto;
+}
+#footer-container > p:first-child {
+    font-weight: bold;
+    font-size: 20px;
+}
+#footer-container > p:not(:first-child) {
+    font-size: 15px;
+    margin: 5px 0px 0px 20px;
+}
+.true{
+    color:blue;
+    font-weight: bold;
+}
+.false{
+    color:red;
+    font-weight: bold;
+}
+
+

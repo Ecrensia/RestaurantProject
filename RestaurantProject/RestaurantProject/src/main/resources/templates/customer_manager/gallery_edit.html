@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>갤러리 관리 페이지</title>
+    <script src="/lib/jquery-3.6.3.min.js"></script>
+    <script src="/js/customer_manager/gallery_edit.js"></script>
+    <link rel="stylesheet" href="/css/customer_manager/gallery_edit.css">
+</head>
+<body>
+    <th:block th:include="/fragments/side_menu.html"></th:block>
+    <div id="title-main-space">
+        <div id="title-sub-space">
+            <p id="title">갤러리 관리 페이지</p>
+            <hr>
+        </div>
+    </div>
+    <div id="empty"></div>
+    <div id="content-space">
+        <form action="" id="gallery-formbox">
+            <div id="main-gallery-box">
+                <div id="gallery-container">
+                    <div id="img-container1" class="gallery-article">
+                        <p>image 1</p>
+                        <input type="text">
+                        <input type="file" id="img-box1">
+                        <label for="img-box1">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                    <div id="img-container2" class="gallery-article">
+                        <p>image 2</p>
+                        <input type="text">
+                        <input type="file" id="img-box2">
+                        <label for="img-box2">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                    <div id="img-container3" class="gallery-article">
+                        <p>image 3</p>
+                        <input type="text">
+                        <input type="file" id="img-box3">
+                        <label for="img-box3">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                    <div id="img-container4" class="gallery-article">
+                        <p>image 4</p>
+                        <input type="text">
+                        <input type="file" id="img-box4">
+                        <label for="img-box4">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                    <div id="img-container5" class="gallery-article">
+                        <p>image 5</p>
+                        <input type="text">
+                        <input type="file" id="img-box5">
+                        <label for="img-box5">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                    <div id="img-container6" class="gallery-article">
+                        <p>image 6</p>
+                        <input type="text">
+                        <input type="file" id="img-box6">
+                        <label for="img-box6">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                    <div id="img-container7" class="gallery-article">
+                        <p>image 7</p>
+                        <input type="text">
+                        <input type="file" id="img-box7">
+                        <label for="img-box7">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                    <div id="img-container8" class="gallery-article">
+                        <p>image 8</p>
+                        <input type="text">
+                        <input type="file" id="img-box8">
+                        <label for="img-box8">파일 선택</label>
+                        <div id="remove-button">삭제</div>
+                    </div>
+                </div>
+            </form>
+            <div id="preview-box">
+                <img src="../../source/img/logo.png" alt="">
+            </div>
+        </div>    
+    </div>
+</body>
+</html>

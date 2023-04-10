@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.restaurant.mapper.ManagerMapper">
+	<resultMap type="manager" id="manager">
+		<id column="manager_id" property="managerId"/>
+		<result column="manager_pass" property="managerPW"/>
+		<result column="manager_rank" property="managerRank"/>
+	</resultMap>
+	
+	<select id="managerLogin" parameterType="hashMap" resultType="manager">
+		select * from manager where manager_id = #{managerId} and manager_pass = #{managerPW}
+	</select>
+</mapper>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/css/signup/signup_3.css">
+    <script src="/lib/jquery-3.6.3.js"></script>
+    <script src="/lib/jquery-ui.js"></script>
+    <script src="/js/signup/signup_3.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>회원가입</h1>
+    </header>
+
+    <section>
+        <form action="/signupSuccess">
+        	<input type="hidden" name="agreementLogin" th:value="${agree}">
+            <article class="box1">
+                <h2>기본정보</h2>
+                <div class="box1_div">
+                    <table class="box1_table">
+                        <tr>
+                            <td>
+                                <h3>이메일 아이디</h3>
+                                <div class="chk">중복체크</div>
+                                <input type="hidden" name="idChk" id="idChk" value="idUnChk">
+                            </td>
+                            
+                            <td>
+                                <input class="id_input" type="text" name="userId" id="id" placeholder="사용할 이메일 입력" required>
+                            </td>
+
+
+                        <tr class="alert_id">
+
+                            <td class="alert_id_result">사용 가능한 이메일 주소를 입력해 주세요. (예 : abcdefg@naver.com)</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>이름</h3>
+                            </td>
+                            <td><input type="text" name="userName" required></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>휴대폰 번호</h3>
+                            </td>
+                            <td>
+                                <input type="tel" name="tel" placeholder="-를 빼고 입력하세요." id="tel" required>
+                            </td>
+                        </tr>
+                     
+
+                    </table>
+                </div>
+
+            </article>
+
+            <article class="box2">
+                <h2>비밀번호</h2>
+                <div class="box2_div">
+                    <table class="box2_table">
+                        <tr>
+                            <td>
+                                <h3>비밀번호 입력</h3>
+                            </td>
+                            <td><input class="pw_input" type="password"
+                                    placeholder="비밀번호, 영문, 숫자, 특수문자 조합 (10 - 20자 사이)" required></td>
+                        </tr>
+                        <tr class="alert_pw1">
+                            <td class="alert_pw1_result">사용할 비밀번호를 입력해 주세요.</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>비밀번호 확인</h3>
+                            </td>
+                            <td><input class="pw_chk" name="passwd" type="password" placeholder="비밀번호 확인 입력" required></td>
+                        </tr>
+                        <tr class="alert_pw2">
+                            <td class="alert_pw2_result">비밀번호를 다시 한번 확인해 주세요.</td>
+                        </tr>
+                    </table>
+                </div>
+            </article>
+
+            <article class="box3">
+                <h2>선택정보</h2>
+                <div class="box3_div">
+                    <table class="box3_table">
+                        <tr>
+                            <td>
+                                <h3>성별</h3>
+                            </td>
+                            <td>
+                                <label>
+                                    <input type="radio" name="gender" value="N" checked>
+                                    <span>선택안함</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="gender" value="M">
+                                    <span>남</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="gender" value="W">
+                                    <span>여</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>생년월일</h3>
+                            </td>
+                            <td>
+                                <label>
+                                    <input class="select_birthday" type="date" value="2000-01-01" name="birthday">
+                                </label>
+                                <label>
+                                    <input class="unselect_birthday" type="checkbox" name="birthday" value="0" checked>
+                                    <span>선택안함</span>
+                                </label>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </article>
+            <div class="submit_button">
+                <button type="submit" class="submit_button">완료</button>
+            </div>
+        </form>
+    </section>
+
+
+
+    <footer>
+        <div id="footer-container">
+            <p>브랜드명
+            <p>
+            <p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+            <p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+            <p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+            <p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+        </div>
+    </footer>
+</body>
+
+</html>

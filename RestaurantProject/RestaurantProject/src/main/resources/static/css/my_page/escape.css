@@ -1,0 +1,250 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+header {
+    width: 100%;
+    background-color: #F67A3E;
+    position: fixed;
+    /* z-index: 100; */
+}
+#header-main-container {
+    width: 1200px;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+}
+#header-logo {
+    width: 140px;
+    height: 120px;
+    text-align: center;
+}
+#header-sub-container {
+    width: 1060px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#login {
+    width: 1060px;
+    height: 60px;
+    text-align: end;
+}
+#header-logo > img {
+    padding-top: 29.71px;
+    width: 100px;
+}
+#header-nav-main {
+    width: 1060px;
+    height: 60px;
+    overflow: hidden;
+}
+#header-nav-main:hover {
+    height: 260px;
+}
+ul.header-largeMenu {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+}
+ul.header-largeMenu a {
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 30px;
+    padding: 15px 0;
+}
+#header-nav-sub {
+    display: flex;
+    flex-flow: row nowrap;
+}
+ul.header-smallMenu {
+    display: flex;
+    flex-flow: column nowrap;
+    list-style-type: none;
+}
+ul.header-smallMenu a {
+    line-height: 25px;
+    font-size: 25px;
+    width: 265px;
+    padding: 12.5px 0;
+}
+#header-nav-main a:not(#login) {
+    color: black;
+    text-align: center;
+    display: inline-block;
+    width: 265px;
+    text-decoration: none;
+}
+
+/*section*/
+section {
+
+    width: 100%;
+    height: 100%;
+    padding-top: 120px;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: #F67A3E;
+    margin: 60px 300px;
+}
+.sub_title{
+    font-size: 25px;
+    color: #F67A3E;
+    width: 900px;
+    margin: 0 auto;
+    padding: 40px 0px;
+}
+.escape_box1 div{
+    margin: 0 auto;
+    border: 5px solid #F67A3E;
+    width: 900px;
+    box-sizing: border-box;
+    padding: 50px;
+
+}
+li{
+    padding: 5px 0px;
+    font-size: 18px;
+}
+.escape_box1_content p{
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-decoration: underline;
+}
+.select_div{
+    width: fit-content;
+    margin: 0 auto;
+}
+.select_div select{
+    width: 520px;
+    height: 60px;
+    border: 2px solid;
+    font-size: 20px;
+    padding: 10px;
+}
+.email_div{
+    margin: 0 auto;
+    width: 300px;
+    height: fit-content;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0px;
+}
+.escape_box3 > hr{
+    width: 400px;
+    margin: 0px auto;
+    border: 2px solid #F67A3E;
+}
+.checkbox_div{
+    width: 1200px;
+    margin: 20px auto;
+    font-size: 20px;
+    text-align: right;
+}
+input[type="checkbox"]{
+    margin-right: 10px;
+}
+.button_div{
+    width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+.button_div button{
+    width: 200px;
+    height: 60px;
+    margin: 10px 20px;
+    background-color: #F67A3E;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    background-color: #F67A3E;
+}
+#footer-container {
+    width: 1200px;
+    padding: 40px 0px;
+    margin: 0px auto;
+}
+#footer-container > p:first-child {
+    font-weight: bold;
+    font-size: 20px;
+}
+#footer-container > p:not(:first-child) {
+    font-size: 15px;
+    margin: 5px 0px 0px 20px;
+}
+
+/* 팝업 */
+
+.modal1{
+    width: 450px;
+    height: 100%;
+    border: 1px solid black;
+}
+.modal_content{
+    width: 450px;
+    background: white;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content_space{
+    margin: 0 auto;
+    width: 400px;
+    height: 200px;
+    border: 5px solid #F67A3E;
+    border-radius: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.content_space > p{
+    font-size: 25px;
+    padding-top: 80px;
+    color: #F67A3E;
+    font-weight: bold;
+}
+
+.modal1 .button{
+    margin: 0 auto;
+    width: 150px;
+    height: 50px;
+    padding-top:  40px;
+}
+.modal1 button{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    color: white;
+    background-color: #F67A3E;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal1{ 
+    position:absolute; 
+    width:100%; 
+    height:100%; 
+    background: rgba(0,0,0,0.5); 
+    top:0; 
+    left:0; 
+    padding-top: 235px;
+    padding-bottom: 350px;
+    display: none;
+    /* z-index: 1000px; */
+
+  }

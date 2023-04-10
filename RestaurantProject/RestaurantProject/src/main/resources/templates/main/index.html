@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+    <link rel="stylesheet" href="/css/main/index.css">
+    <script src="/lib/jquery-3.6.3.js"></script>
+    <script src="/js/main/index.js"></script>
+</head>
+<body>
+	<th:block th:include="/fragments/header.html"></th:block>
+    <section>
+        <div class="gallery">
+            <div id="gallery-img-box">
+                <img src="/img/advertisement/forest05.jpg" alt="main_silde_advertisement1">
+                <img src="/img/advertisement/forest06.jpg" alt="main_silde_advertisement2">
+                <img src="/img/advertisement/forest07.jpg" alt="main_silde_advertisement3">
+                <img src="/img/advertisement/forest08.jpg" alt="main_silde_advertisement4">
+            </div>
+            <button class="left arrow">
+                <img src="/img/advertisement/left_arrow.png" alt="main_silde_advertisement_move_left_arrow">
+            </button>
+            <button class="right arrow">
+                <img src="/img/advertisement/right_arrow.png" alt="main_silde_advertisement_move_right_arrow">
+            </button>
+            <div id="gallery-map">
+                <div class="gallery-selected"></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="advertisement">
+            <img src="/img/advertisement/forest05.jpg" alt="main_single_advertisement1">
+        </div>
+    </section>
+    <footer>
+        <div id="footer-container">
+            <p>브랜드명<p>
+            <p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+            <p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+            <p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+            <p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>결제정보</title>
+<link rel="stylesheet" href="/css/my_page/myPage_payInfo.css">
+</head>
+
+<body>
+	<th:block th:include="/fragments/header.html"></th:block>
+	<section>
+		<h2>MY PAGE</h2>
+		<article class="payInfo_box1">
+			<div class="payInfo_box1_div">
+				<div class="a_tag">
+					<a href="/myPageChangeInfo1">
+						<h3>정보변경</h3>
+					</a>
+				</div>
+				<div class="a_tag">
+					<a href="/myPagePayInfo">
+						<h3>결제정보</h3>
+					</a>
+				</div>
+				<div class="a_tag">
+					<a href="/myPageReservation">
+						<h3>나의 예약</h3>
+					</a>
+				</div>
+			</div>
+		</article>
+		<form action="">
+			<article class="payInfo_box2">
+				<div class="payInfo_box2_div">
+					<div class="patInfo_title">
+						<p>기본 결제 정보</p>
+					</div>
+					<div class="cardInfo">
+						<div class="card">
+							<div>
+								<p>카드 이름</p>
+								<br>
+								<p>카드 번호</p>
+							</div>
+							<div class="deleteButton">
+								<p>삭제</p>
+							</div>
+						</div>
+						<br>
+						<hr>
+						<div class="newCard">
+							<a href="">
+								<div>새로운 결제 수단 등록</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</article>
+		</form>
+
+	</section>
+
+
+	<footer>
+		<div id="footer-container">
+			<p>브랜드명
+			<p>
+			<p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+			<p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+			<p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+			<p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+		</div>
+	</footer>
+</body>
+
+</html>

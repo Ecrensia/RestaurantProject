@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오더</title>
+    <link rel="stylesheet" href="/css/order/order.css">
+    <script src="/lib/jquery-3.6.3.js"></script>
+    <script src="/lib/jquery-ui.js"></script>
+    <script src="/js/order/order.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        function searchSeatMap(date, hour, min) {
+            let code = $(this).prev().attr('id');
+            let param = 'code=' + code + '&date=' + date + '&time=' + hour + min;
+            $.ajax({
+                url : '/order/search/seatmap',
+                data : param,
+                type : 'post',
+                dataType: 'json',
+                success : function(result) {
+                    let tag ='';
+                    for(let i = 0; i < result.length; i++) {
+                        if(`${result[i].SEAT_NO}` < 10) {
+                            tag += `<div style="left:${result[i].X_DIRECTION}px; top:${result[i].Y_DIRECTION}px"><input type="checkbox" id="seat0${result[i].SEAT_NO}" class="seat"><label for="seat0${result[i].SEAT_NO}">0${result[i].SEAT_NO}</label></div>`;
+                        } else {
+                            tag += `<div style="left:${result[i].X_DIRECTION}px; top:${result[i].Y_DIRECTION}px"><input type="checkbox" id="seat${result[i].SEAT_NO}" class="seat"><label for="seat${result[i].SEAT_NO}">${result[i].SEAT_NO}</label></div>`;
+                        }
+                    }
+                    $('.seat-map').html(tag);
+                }
+            });
+        }
+        
+        $(function() {
+            $('#reserv-search').click(function() {
+                let date = $('[type="date"]').val();
+                let hour = $('[name="hour"]').val();
+                let min = $('[name="min"]').val();
+                let persons = $('#personnel').val();
+                let param = 'date=' + date + '&time=' + hour + min + '&persons=' + persons;
+                
+                $.ajax({
+                    url : '/order/search/office',
+                    data : param,
+                    type : 'post',
+                    dataType: 'json',
+                    success : function(result) {
+                        let tag ='';
+                        for(let i = 0; i < result.length; i++) {
+                            tag += '<div id="branch-office"><input type="radio" name="branch-office"';
+                            tag += `id=${result[i].BRANCH_OFFICE_CODE} value=${result[i].OFFICE_NAME}>`;
+                            tag += `<label for=${result[i].BRANCH_OFFICE_CODE}>${result[i].OFFICE_NAME}</label></div>`;
+                        }
+                        $('#branch-offices').html(tag);
+                        $('#branch-office > label').click(searchSeatMap(date, hour, min));
+                    }
+                })
+            });
+
+
+            $('#to-payment').click(function() {
+                let order = $('[name="order"]:checked').val();
+                let name = $('[name="name"]').val();
+                let tel = $('[name="tel"]').val();
+                let address = $('#main-address').val();
+                let addressDetail = $('#sub-address').val();
+                let date = $('[type="date"]').val();
+                let hour = $('[name="hour"]').val();
+                let min = $('[name="min"]').val();
+                let persons = $('#personnel').val();
+                let branchOffice = $('[name="branch-office"]:checked').val();
+                let seats = [];
+                $('.seat:checked').each(function(i) {
+                    seats.push($(this).next().text());
+                });
+                
+                console.log(seats);
+
+                switch (order) {
+                    case "reservation":
+                        
+                        break;
+                    case "packaging":
+                        
+                        break;
+
+                    case "packaging":
+
+                        break;
+                    default:
+                        break;
+                }
+
+            });
+        });
+    </script>
+</head>
+<body>
+<th:block th:include="/fragments/header.html"></th:block>
+    <section>
+        <p>오더</p>
+        <hr>
+        <div class="order-accordion">
+            <p>오더선택</p>
+            <div class="accordion-first">
+                <div id="input-radio">
+                    <div>
+                        <input type="radio" name="order" id="reserv" value="reservation" checked>
+                        <label for="reserv">예약</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="order" id="deliv" value="delivery">
+                        <label for="deliv">배달</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="order" id="pack" value="packaging">
+                        <label for="pack">포장</label>
+                    </div>
+                </div>
+                <p>고객 정보</p>
+                <div class="attach">
+                    <table>
+                        <tr>
+                            <td>이름</td>
+                            <td colspan="2"><input type="text" name="name"></td>
+                        </tr>
+                        <tr>
+                            <td>연락처</td>
+                            <td colspan="2"><input type="text" name="tel"></td>
+                        </tr>
+                        <tr>
+                            <td>주소</td>
+                            <td><input type="text" id="main-address" disabled></td>
+                            <td><input type="button" id="address-search" value="검색" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>상세주소</td>
+                            <td colspan="2"><input type="text" id="sub-address" disabled></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="step-button">
+                    <p class="next-step" id="next-first">다음 단계로</p>
+                </div>
+            </div>
+            <p>좌석선택</p>
+            <div class="accordion-second">
+                <p>예약 정보</p>
+                <div class="reserv-info">
+                    <input type="date">
+                    <select name="hour">
+                        <option value="10">10시</option>
+                        <option value="11">11시</option>
+                        <option value="12">12시</option>
+                        <option value="13">13시</option>
+                        <option value="14">14시</option>
+                        <option value="15">15시</option>
+                        <option value="16">16시</option>
+                        <option value="17">17시</option>
+                        <option value="18">18시</option>
+                        <option value="19">19시</option>
+                        <option value="20">20시</option>
+                        <option value="21">21시</option>
+                    </select>
+                    <select name="min">
+                        <option value="00">00분</option>
+                        <option value="20">20분</option>
+                        <option value="40">40분</option>
+                    </select>
+                    <select name="personnel" id="personnel">
+                        <option value="1">1명</option>
+                        <option value="2">2명</option>
+                        <option value="3">3명</option>
+                        <option value="4">4명</option>
+                        <option value="5">5명</option>
+                        <option value="6">6명</option>
+                    </select>
+                    <input type="button" id="reserv-search" value="예약가능 지점조회">
+                </div>
+                <p>예약가능 지점</p>
+                <div class="attach" id="branch-offices">
+                    <p>예약가능 매장을 검색하세요</p>
+                </div>
+                <p>좌석 배치도</p>
+                <div class="attach seat-map">
+                    <div>
+                        <input type="checkbox" id="seat01" class="seat">
+                        <label for="seat01">01</label>
+                    </div>
+                </div>
+                <div class="step-button">
+                    <p class="prev-step" id="prev-second">이전 단계로</p>
+                    <p class="next-step" id="next-second">다음 단계로</p>
+                </div>
+            </div>
+            <p>메뉴선택</p>
+            <div class="accordion-third">
+                <div id="accord-third">
+                    <div id="menu-board">
+                        <ul>
+                            <li><a href="#tab_popular_menu">인기메뉴</a></li>
+                            <li><a href="#tab_single_menu">단품</a></li>
+                            <li><a href="#tab_set_menu">세트메뉴</a></li>
+                            <li><a href="#tab_side_menu">사이드</a></li>
+                            <li><a href="#tab_beverage_menu">음료</a></li>
+                        </ul>
+                        <div class="sub-board" id="tab_popular_menu">
+                            <div class="tabMenu can-side" th:each="h : ${hList}">
+                                <input type="hidden" name="menuCode" th:value="${h.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${h.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${h.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${h.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${h.menuCode})}" th:alt="${h.menuName}">
+                                <p>[[${h.menuName}]]</p>
+                                <p>[[${h.price}]]</p>
+                            </div>
+                        </div>
+                        <div class="sub-board" id="tab_single_menu">
+                            <div class="tabMenu can-side" th:each="single : ${singleList}">
+                                <input type="hidden" name="menuCode" th:value="${single.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${single.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${single.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${single.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${single.menuCode})}" th:alt="${single.menuName}">
+                                <p>[[${single.menuName}]]</p>
+                                <p>[[${single.price}]]</p>
+                            </div>
+                        </div>
+                        <div class="sub-board" id="tab_set_menu">
+                            <div class="tabMenu can-side" th:each="set : ${setList}">
+                                <input type="hidden" name="menuCode" th:value="${set.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${set.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${set.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${set.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${set.menuCode})}" th:alt="${set.menuName}">
+                                <p>[[${set.menuName}]]</p>
+                                <p>[[${set.price}]]</p>
+                            </div>
+                        </div>
+                        <div class="sub-board" id="tab_side_menu">
+                            <div class="tabMenu" th:each="side : ${sideList}">
+                                <input type="hidden" name="menuCode" th:value="${side.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${side.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${side.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${side.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${side.menuCode})}" th:alt="${side.menuName}">
+                                <p>[[${side.menuName}]]</p>
+                                <p>[[${side.price}]]</p>
+                            </div>
+                        </div>
+                        <div class="sub-board" id="tab_beverage_menu">
+                            <div class="tabMenu" th:each="bev : ${beverageList}">
+                                <input type="hidden" name="menuCode" th:value="${bev.menuCode}">
+                                <input type="hidden" name="mainCategoryCode" th:value="${bev.mainCategoryCode}">
+                                <input type="hidden" name="basicOption1" th:value="${bev.basicOption1}">
+                                <input type="hidden" name="basicOption2" th:value="${bev.basicOption2}">
+                                <img th:src="@{/order/imgdown/{code}(code=${bev.menuCode})}" th:alt="${bev.menuName}">
+                                <p>[[${bev.menuName}]]</p>
+                                <p>[[${bev.price}]]</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu-basket">
+                        <div>주문리스트</div>
+                        <div id="select-menu-list">
+                            
+                        </div>
+                        <div>개수 : <span id="total-menu-count">0</span>개</div>
+                        <div>금액 : <span id="total-menu-price">0</span>원</div>
+                    </div>
+                </div>
+                <div class="step-button">
+                    <p class="prev-step" id="prev-third">이전 단계로</p>
+                    <p class="next-step" id="next-third">다음 단계로</p>
+                </div>
+            </div>
+            <p>요청사항</p>
+            <div class="accordion-fourth">
+                <div id="textarea">
+                    <p>추가로 매장에 요청할 사항을 적어주세요.</p>
+                    <textarea name="to_office_request" cols="30" rows="10"></textarea>
+                </div>
+                <div class="step-button">
+                    <p class="prev-step" id="prev-fourth">이전 단계로</p>
+                    <button id="to-payment">결제 페이지로</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="footer-container">
+            <p>브랜드명<p>
+            <p>국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다. 환경권의 내용...</p>
+            <p>법원은 최고법원인 대법원과 각급법원으로 조직된다. 중앙선거관리위원회...</p>
+            <p>비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·...</p>
+            <p>감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타...</p>
+        </div>
+    </footer>
+    <div id="modal-background"></div>
+    <div id="modal-main-container1">
+        <div class="modal-title">
+            <p>옵션1</p>
+        </div>
+        <div class="modal-contents-container">
+            <th:block th:each="option1 : ${sideList}">
+                <th:block th:if="${option1.middleCategoryCode == 'BA'}">
+                    <div class="modal-content-box">
+                        <input type="radio" th:id="${option1.menuCode}" name="option1">
+                        <label th:for="${option1.menuCode}">
+                            <input type="hidden" name="menuCode" th:value="${option1.menuCode}">
+                            <img th:src="@{/order/imgdown/{code}(code=${option1.menuCode})}" th:alt="${option1.menuName}">
+                            <p>[[${option1.menuName}]]</p>
+                            <p>[[${option1.price}]]</p>
+                        </label>
+                    </div>
+                </th:block>
+            </th:block>
+        </div>
+        <div class="modal-button-container">
+            <div class="cancel">취소</div>
+            <div class="complate">완료</div>
+        </div>
+    </div>
+    <div id="modal-main-container2">
+        <div class="modal-title">
+            <p>옵션2</p>
+        </div>
+        <div class="modal-contents-container">
+            <div class="modal-content-box" th:each="option2 : ${beverageList}">
+                <input type="radio" th:id="${option2.menuCode}" name="option2">
+                <label th:for="${option2.menuCode}">
+                    <input type="hidden" name="menuCode" th:value="${option2.menuCode}">
+                    <img th:src="@{/order/imgdown/{code}(code=${option2.menuCode})}" th:alt="${option2.menuName}">
+                    <p>[[${option2.menuName}]]</p>
+                    <p>[[${option2.price}]]</p>
+                </label>
+            </div>
+        </div>
+        <div class="modal-button-container">
+            <div class="cancel">취소</div>
+            <div class="complate">완료</div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
